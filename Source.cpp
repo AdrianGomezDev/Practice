@@ -4,18 +4,48 @@ using namespace std;
 
 class Data {
 public:
-
-	Data(int val):value(val) {}
+	Data(int val) :ivalue(val), bvalue(0), fvalue(0), dvalue(0), cvalue(0) {}
+	Data(bool val) :bvalue(val), ivalue(0), fvalue(0), dvalue(0), cvalue(0) {}
+	Data(double val):dvalue(val), bvalue(0), fvalue(0), ivalue(0), cvalue(0) {}
+	Data(float val):fvalue(val), bvalue(0), ivalue(0), dvalue(0), cvalue(0) {}
+	Data(char val):cvalue(val), bvalue(0), fvalue(0), dvalue(0), ivalue(0) {}
 	~Data() {}
-	void Show() { cout << value << endl; }
+	void Show();
 	int Compare(const Data& data);
 private: 
-	int value;
+	int ivalue;
+	bool bvalue;
+	float fvalue;
+	double dvalue;
+	char cvalue;
 };
+
+void Data::Show() {
+	
+	if (ivalue != NULL) {
+		cout << ivalue << endl;
+	}
+	else if (bvalue != NULL) {
+		cout << bvalue << endl;
+	}
+	else if (bvalue == NULL && ivalue==NULL && dvalue == NULL && fvalue == NULL && cvalue == NULL) {
+		cout << bvalue << endl;
+	}
+	else if (fvalue != NULL) {
+		cout << fvalue << endl;
+	}
+	else if (dvalue != NULL) {
+		cout << dvalue << endl;
+	}
+	else if (cvalue != NULL) {
+		cout << cvalue << endl;
+	}
+	
+}
 
 int Data::Compare(const Data& data) {
 	// 1 or 2?
-	return 1; 
+	return 2; 
 }
 
 class Node;
@@ -120,23 +150,50 @@ void LinkedList::Insert(Data* theData) {
 int main()
 {
 	Data* pData; 
-	int value;
+	double value;
+	bool bv = true;
+	char cv = 'y';
+	char ccv = 'z';
+	float fv = 77.77;
+	bool bbv = false;
+	int iv = 22222;
+	int iiv = 4;
+	float ffv = 3.333;
+
 	LinkedList el;
 
-	value = 3; 
+	value = 3.2; 
 	pData = new Data(value);
 
 	el.Insert(pData);
 
-	value = 7;
+	value = 7.8;
 	Data* pDataTwo = new Data(value);
 
 	el.Insert(pDataTwo);
 
-	value = 8;
+	value = 8.9;
 	Data* pDataThree = new Data(value);
 
 	el.Insert(pDataThree);
+
+	Data* bvData = new Data(bv);
+	Data* cvData = new Data(cv);
+	Data* ccvData = new Data(ccv);
+	Data* fvData = new Data(fv);
+	Data* bbvData = new Data(bbv);
+	Data* ivData = new Data(iv);
+	Data* iivData = new Data(iiv);
+	Data* ffvData = new Data(ffv);
+
+	el.Insert(bvData);
+	el.Insert(cvData);
+	el.Insert(ccvData);
+	el.Insert(fvData);
+	el.Insert(bbvData);
+	el.Insert(ivData);
+	el.Insert(iivData);
+	el.Insert(ffvData);
 
 	el.ShowList();
 
